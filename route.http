@@ -13,11 +13,11 @@ GET http://localhost:3333/videos
 
 ### 
 
-PUT http://localhost:3333/videos
+PUT http://localhost:3333/videos/42e81a23-35f9-4e22-b87a-6c43ec50bdf9
 Content-type: application/json
 
 {
-  "title": "Video 02",
-  "description": "Esse é o segundo video da requisição",
-  "duration": 300
+  "title": "Video Alterado",
+  "description": "Alterando infos do video video",
+  "duration": 420
 }
