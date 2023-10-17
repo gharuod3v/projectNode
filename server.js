@@ -1,29 +1,51 @@
-// import { createServer } from 'node:http'
-
-// const server = createServer((req, res) => {
-//   res.write('testando script do node')
-
-//   return res.end()
-// })
-
-// server.listen(3333) //localhost:3333
-
 import { fastify } from "fastify";
+import { DatabaseMemory } from './database-memory.js';
 
 const server = fastify()
 
-server.get('/', () => {
-  return 'testando rota raiz'
-})
-
-server.get('/hello', () => {
-  return 'Essa já é a rota do Hello world'
-})
-
-server.get('/teste', () => {
-  return 'Essa rota é só um terceiro exemplo'
-})
+const database = new DatabaseMemory()
 
 server.listen({
   port: 3333
+})
+
+
+// POST http://localhost:3333/videos
+// PUT  http://localhost:3333/videos/:id
+
+
+//rotas de chamada do server (fastify)
+server.post('/videos', (request, reply) => {
+  const { title, description, duration } = request.body
+
+  console.log({ title, description, duration })
+
+  database.create({
+    title,
+    description,
+    duration,
+  })
+  
+  return reply.status(201).send()
+})
+
+server.get('/videos', () => {  
+  const videos = database.list()
+
+  return videos
+})
+
+server.put('/videos/:id', (request, reply) => {
+  const videoId = request.params.videoId()
+  const { title, description, duration } = request.body
+  
+ database.update(videoId, {
+    title, description, duration
+  })
+
+  return reply.status(204).send()
+})
+
+server.delete('/videos/:id', () => {
+  return 'Delete Video'
 })
