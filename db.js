@@ -3,7 +3,7 @@ import 'dotenv/config'
 
 let { PGHOST, PGDATABASE, PGUSER, PGPASSWORD, ENDPOINT_ID } = process.env;
 
-const sql = postgres({
+export const sql = postgres({
   host: PGHOST,
   database: PGDATABASE,
   username: PGUSER,
@@ -15,4 +15,3 @@ const sql = postgres({
   },
 });
 
-export default sql
