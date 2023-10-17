@@ -9,7 +9,7 @@ export class DatabasePostgres {
    
    if (search) {
     videos = await sql`
-      SELECT * from videos WHERE title ILIKE "%${search}%"
+      SELECT * from videos WHERE title ILIKE ${'%' + search + '%'}
     `
    } else {
     videos = await sql`
@@ -34,10 +34,23 @@ export class DatabasePostgres {
   }
 
   update(id, video) {
+    const { title, description, duration } = video
 
+    sql`
+      UPDATE videos set title = ${title}, description = ${description}, duration = ${duration}
+      WHERE id = ${id}
+    `
+    .then(() => {
+      console.log('Alteração realizada com sucesso!')
+    })
   }
 
-  delete(id) {
-
+  async delete(id) {
+    await sql`
+      DELETE from videos WHERE id = ${id}
+    `
+    .then(() => {
+      console.log('Video deletado com sucesso!')
+    })
   }
 }

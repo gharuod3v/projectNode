@@ -17,15 +17,15 @@ GET http://localhost:3333/videos
 
 ### 
 
-PUT http://localhost:3333/videos/2c230c8a-deb2-42e9-a56f-596b9c6f7499
+PUT http://localhost:3333/videos/a970256a-ff6b-4c20-805a-15747febd6e5
 Content-type: application/json
 
 {
-  "title": "Video Alterado",
-  "description": "Alterando infos do video video",
+  "title": "Video 03",
+  "description": "Esse é o video alterado depois de migrar pro Postgres",
   "duration": 420
 }
 
 ### 
 
-DELETE http://localhost:3333/videos/47058251-f048-464c-9237-baee6581ffba
+DELETE http://localhost:3333/videos/0a593fc1-2b07-40de-a428-0f190b6079dd
