@@ -7,7 +7,7 @@ const server = fastify()
 const database = new DatabasePostgres()
 
 server.listen({
-  port: 3333
+  port: process.env.PORT ?? 3333
 })
 
 
