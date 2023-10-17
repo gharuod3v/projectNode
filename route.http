@@ -2,8 +2,8 @@ POST http://localhost:3333/videos
 Content-type: application/json
 
 {
-  "title": "Video node",
-  "description": "Esse é o segundo video da requisição",
+  "title": "Testando console log",
+  "description": "Foi inserido o console log para teste de CRUD",
   "duration": 300
 }
 

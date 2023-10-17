@@ -2,7 +2,7 @@ import { sql } from './db.js'
 
 sql`
   CREATE TABLE videos (
-    id SERIAL PRIMARY KEY,
+    id          TEXT PRIMARY KEY,
     title       TEXT,
     description TEXT,
     duration    INTEGER
